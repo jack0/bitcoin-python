@@ -38,12 +38,12 @@ class BitcoinConnection(object):
     - *host* -- Bitcoin JSON-RPC host.
     - *port* -- Bitcoin JSON-RPC port.
     """
-    def __init__(self, user, password, host='localhost', port=8332):
+    def __init__(self, user, password, host='localhost', port=8332, protocol='http'):
         """
         Create a new bitcoin server connection.
         """
-        url = 'http://%s:%s@%s:%s/' % (
-            user, password, host, port
+        url = '%s://%s:%s@%s:%s/' % (
+            protocol, user, password, host, port
             )
         try:
             self.proxy = ServiceProxy(url)
